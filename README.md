@@ -1,3 +1,3 @@
-# Check my portfolio! :)
+# Check out my portfolio! :)
 
-# Felpscripter.github.io
+[Felpscripter.github.io](https://felpscripter.github.io)
