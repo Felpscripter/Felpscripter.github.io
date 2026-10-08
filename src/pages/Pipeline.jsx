@@ -1,20 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import usePageMeta from '../hooks/usePageMeta.js';
-
-const YAML = `name: E2E Tests
-on: [push, pull_request]
-
-jobs:
-  playwright:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install -r requirements.txt
-      - run: playwright install --with-deps
-      - run: pytest`;
+import { YAML } from '../data/pipelineData.js';
 
 export default function Pipeline() {
   usePageMeta({
@@ -29,7 +15,6 @@ export default function Pipeline() {
   const [copyLabel, setCopyLabel] = useState('Copiar');
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
-
 
   const copyYaml = async () => {
     try {

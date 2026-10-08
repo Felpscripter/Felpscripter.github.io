@@ -1,126 +1,13 @@
-import { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import usePageMeta from '../hooks/usePageMeta.js';
 import ParticleCanvas from '../components/ParticleCanvas.jsx';
 import { BranchIcon, GearIcon, GitHubIcon, TargetIcon, TriangleIcon, ZoomIcon } from '../components/Icons.jsx';
 
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-
-const PHRASES = [
-  'Engenheiro de QA',
-  'Automação com Playwright + Python',
-  'Testes de API com Postman',
-  'CI/CD com GitHub Actions',
-];
-
-function Typed() {
-  const [reduced] = useState(prefersReducedMotion);
-  const [text, setText] = useState(reduced ? PHRASES[0] : '');
-
-  useEffect(() => {
-    if (reduced) return;
-    let p = 0, i = 0, del = false, timer;
-    const tick = () => {
-      const word = PHRASES[p];
-      setText(word.slice(0, i));
-      let delay = del ? 24 : 55;
-      if (!del && i === word.length) { del = true; delay = 1700; }
-      else if (del && i === 0) { del = false; p = (p + 1) % PHRASES.length; delay = 300; }
-      i += del ? -1 : 1;
-      timer = setTimeout(tick, delay);
-    };
-    tick();
-    return () => clearTimeout(timer);
-  }, [reduced]);
-
-  return <span id="typed">{text}</span>;
-}
-
-
-const TERM_LINES = [
-  <><span className="muted">$</span> pytest --headed</>,
-  <><span className="check">✓</span> test_valid_login <i>1.4s</i></>,
-  <><span className="check">✓</span> test_api_status_200 <i>0.3s</i></>,
-  <><span className="check">✓</span> test_query_orders <i>0.2s</i></>,
-];
-
-function Terminal() {
-  const total = TERM_LINES.length + 1;
-  const [shown, setShown] = useState(0);
-
-  useEffect(() => {
-    const reduced = prefersReducedMotion();
-    const timers = Array.from({ length: total }, (_, i) =>
-      setTimeout(() => setShown((s) => Math.max(s, i + 1)), reduced ? 0 : 700 + i * 550)
-    );
-    return () => timers.forEach(clearTimeout);
-  }, [total]);
-
-  const cls = (i, extra = '') => 'term-line' + extra + (i < shown ? ' show' : '');
-
-  return (
-    <div className="term mono" id="term" aria-hidden="true">
-      {TERM_LINES.map((line, i) => (
-        <div className={cls(i)} key={i}>{line}</div>
-      ))}
-      <div className={cls(TERM_LINES.length, ' sum')}>3 passaram em 4.21s</div>
-    </div>
-  );
-}
-
-
-const K = ({ children }) => <span className="c-k">{children}</span>;
-const F = ({ children }) => <span className="c-f">{children}</span>;
-const S = ({ children }) => <span className="c-s">{children}</span>;
-const C = ({ children }) => <span className="c-c">{children}</span>;
-
-const CODE_LINES = [
-  <><K>from</K>{' playwright.sync_api '}<K>import</K>{' Page, expect'}</>,
-  '',
-  <><K>def</K>{' '}<F>test_valid_login</F>{'(page: Page):'}</>,
-  <>{'    page.'}<F>goto</F>{'('}<S>"/login"</S>{')'}</>,
-  <>{'    page.'}<F>get_by_label</F>{'('}<S>"Email"</S>{').'}<F>fill</F>{'('}<S>"qa@test.com"</S>{')'}</>,
-  <>{'    page.'}<F>get_by_label</F>{'('}<S>"Password"</S>{').'}<F>fill</F>{'('}<S>"********"</S>{')'}</>,
-  <>{'    page.'}<F>get_by_role</F>{'('}<S>"button"</S>{', name='}<S>"Sign in"</S>{').'}<F>click</F>{'()'}</>,
-  '',
-  <>{'    '}<C># qualidade é um requisito, não um extra</C></>,
-  <>{'    '}<F>expect</F>{'(page).'}<F>to_have_url</F>{'('}<S>"/dashboard"</S>{')'}</>,
-];
-
-
-const TOOLS = [
-  'Playwright', 'Python', 'Postman', 'Docker',
-  'GitHub Actions', 'Jira', 'MySQL', 'Git',
-  'Chrome DevTools', 'Linux', 'SQL', 'GitLab',
-];
-
-
-function BackgroundMoon() {
-  const [opacity, setOpacity] = useState(0.25);
-
-  useEffect(() => {
-    const reduced = prefersReducedMotion();
-    if (reduced) return;
-
-    const onScroll = () => {
-
-      const newOpacity = Math.max(0, 0.25 * (1 - window.scrollY / 1200));
-      setOpacity(newOpacity);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return (
-    <div className="bg-moon" style={{ opacity }} aria-hidden="true">
-      <img src="/moon.png" alt="Lua" />
-    </div>
-  );
-}
+import Typed from '../components/home/Typed.jsx';
+import Terminal from '../components/home/Terminal.jsx';
+import BackgroundMoon from '../components/home/BackgroundMoon.jsx';
+import { CODE_LINES, TOOLS } from '../data/homeData.jsx';
 
 export default function Home() {
   usePageMeta({
@@ -135,7 +22,6 @@ export default function Home() {
     <>
       <section className="hero" id="inicio">
         <div className="container hero-in">
-
           <h1 className="reveal">Qualidade em cada commit.<br /><span className="fade">Confiança em cada deploy.</span></h1>
 
           <div className="profile-pic-container reveal" style={{ '--d': '0.1s' }}>
@@ -188,7 +74,6 @@ export default function Home() {
         <div className="container marquee-wrap reveal">
           <p className="marquee-label mono">Ferramentas</p>
           <div className="marquee" aria-hidden="true">
-
             <div className="marquee-track" id="marquee-track">
               {[...TOOLS, ...TOOLS].map((tool, i) => <span key={i}>{tool}</span>)}
             </div>

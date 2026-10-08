@@ -1,0 +1,14 @@
+export const YAML = `name: E2E Tests
+on: [push, pull_request]
+
+jobs:
+  playwright:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: playwright install --with-deps
+      - run: pytest`;
