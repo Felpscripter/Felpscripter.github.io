@@ -121,6 +121,15 @@ b, strong { font-weight: 600; }
 
 /* ============ Hero ============ */
 .hero { position: relative; margin-top: calc(var(--header-h) * -1); padding-top: calc(var(--header-h) + 90px); overflow: hidden; }
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 10;
+}
 .hero-bg {
   position: absolute; inset: 0; z-index: -2;
   background-image:
@@ -141,6 +150,20 @@ b, strong { font-weight: 600; }
   animation: glow 12s ease-in-out infinite alternate;
 }
 @keyframes glow { to { transform: translateX(-47%) scale(1.06); } }
+
+.bg-moon {
+  position: absolute; z-index: -1;
+  left: 50%; bottom: -450px;
+  transform: translateX(-50%);
+  width: 250vw; max-width: 2500px;
+  pointer-events: none;
+  opacity: 0.25; /* Fallback se js não rodar, ou inicial antes do hook */
+}
+.bg-moon img {
+  width: 100%; height: auto;
+  display: block;
+  filter: drop-shadow(0 0 40px var(--fg));
+}
 
 .hero-in { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .pill {
