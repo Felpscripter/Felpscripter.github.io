@@ -211,7 +211,7 @@ export default function Home() {
                 como o software funciona e encontrar os problemas que passariam despercebidos.
               </p>
               <p>
-                Já atuo na área há mais de 2 anos eminha experiência abrange testes automatizados, web &amp; mobile, de API e banco de dados, com Python, Playwright,
+                Já atuo na área há mais de 2 anos e minha experiência abrange testes automatizados, web &amp; mobile, de API e banco de dados, com Python, Playwright,
                 Postman, Docker, GitHub Actions, Git e Jira como parte do meu kit diário de ferramentas.
               </p>
               <p>
