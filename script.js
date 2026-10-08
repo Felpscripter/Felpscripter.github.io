@@ -48,10 +48,10 @@
 
   // Efeito de digitação
   const phrases = [
-    'QA Engineer',
-    'Automation with Playwright + Python',
-    'API testing with Postman',
-    'CI/CD with GitHub Actions',
+    'Engenheiro de QA',
+    'Automação com Playwright + Python',
+    'Testes de API com Postman',
+    'CI/CD com GitHub Actions',
   ];
   const typed = $('#typed');
   if (!typed) {
@@ -111,9 +111,9 @@
   if (copyBtn) copyBtn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText($('#yaml-code').innerText);
-      copyBtn.textContent = 'Copied ✓';
-    } catch { copyBtn.textContent = 'Error'; }
-    setTimeout(() => (copyBtn.textContent = 'Copy'), 1800);
+      copyBtn.textContent = 'Copiado ✓';
+    } catch { copyBtn.textContent = 'Erro'; }
+    setTimeout(() => (copyBtn.textContent = 'Copiar'), 1800);
   });
 
   // Particle Canvas
