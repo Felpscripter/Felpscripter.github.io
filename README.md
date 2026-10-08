@@ -2,7 +2,7 @@
 
 Olá! Bem-vindo ao repositório do meu portfólio pessoal. Me chamo **Luiz Felipe**, sou **Engenheiro de QA** focado em garantir a excelência e a estabilidade de softwares por meio de testes e automação.
 
-🌐 **[Clique aqui para acessar o meu Portfólio Online!](https://felpscripter.github.io)**
+**[Acesse o meu Portfólio! :)](https://felpscripter.github.io)**
 
 ## 🛠️ O que você vai encontrar por lá?
 
