@@ -30,7 +30,7 @@ export default function Pipeline() {
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
-  // Copiar YAML
+
   const copyYaml = async () => {
     try {
       await navigator.clipboard.writeText(yamlRef.current.innerText);

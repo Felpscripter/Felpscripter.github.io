@@ -1,11 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-/**
- * Gerencia a rolagem entre rotas:
- * - troca de página → topo (ou âncora) instantaneamente, como num carregamento normal;
- * - mesma página com âncora (#sobre, #contato…) → rolagem suave (scroll-behavior do CSS).
- */
+
 export default function useScrollManager() {
   const { pathname, hash, key } = useLocation();
   const prevPath = useRef(null);

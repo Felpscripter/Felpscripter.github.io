@@ -71,7 +71,7 @@ const TOOLS = [
   },
 ];
 
-// Spotlight sutil nos cards
+
 const spotlight = (e) => {
   const card = e.currentTarget;
   const r = card.getBoundingClientRect();

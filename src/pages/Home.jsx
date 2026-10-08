@@ -7,7 +7,7 @@ import { BranchIcon, GearIcon, GitHubIcon, TargetIcon, TriangleIcon, ZoomIcon } 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------- Efeito de digitação ---------- */
+
 const PHRASES = [
   'Engenheiro de QA',
   'Automação com Playwright + Python',
@@ -38,7 +38,7 @@ function Typed() {
   return <span id="typed">{text}</span>;
 }
 
-/* ---------- Logs de teste aparecendo em sequência ---------- */
+
 const TERM_LINES = [
   <><span className="muted">$</span> pytest --headed</>,
   <><span className="check">✓</span> test_valid_login <i>1.4s</i></>,
@@ -47,7 +47,7 @@ const TERM_LINES = [
 ];
 
 function Terminal() {
-  const total = TERM_LINES.length + 1; // + linha de resumo
+  const total = TERM_LINES.length + 1;
   const [shown, setShown] = useState(0);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function Terminal() {
   );
 }
 
-/* ---------- Código de exemplo (test_login.py) ---------- */
+
 const K = ({ children }) => <span className="c-k">{children}</span>;
 const F = ({ children }) => <span className="c-f">{children}</span>;
 const S = ({ children }) => <span className="c-s">{children}</span>;
@@ -89,14 +89,14 @@ const CODE_LINES = [
   <>{'    '}<F>expect</F>{'(page).'}<F>to_have_url</F>{'('}<S>"/dashboard"</S>{')'}</>,
 ];
 
-/* ---------- Marquee ---------- */
+
 const TOOLS = [
   'Playwright', 'Python', 'Postman', 'Docker',
   'GitHub Actions', 'Jira', 'MySQL', 'Git',
   'Chrome DevTools', 'Linux', 'SQL', 'GitLab',
 ];
 
-/* ---------- Background Moon ---------- */
+
 function BackgroundMoon() {
   const [opacity, setOpacity] = useState(0.25);
 
@@ -105,13 +105,13 @@ function BackgroundMoon() {
     if (reduced) return;
 
     const onScroll = () => {
-      // Fade out slowly, disappears entirely at scroll 1200px
+
       const newOpacity = Math.max(0, 0.25 * (1 - window.scrollY / 1200));
       setOpacity(newOpacity);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // Apply initial opacity
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -125,7 +125,7 @@ function BackgroundMoon() {
 export default function Home() {
   usePageMeta({
     page: 'home',
-    title: 'Luiz Felipe Ribeiro da Silva | Engenheiro de QA – Playwright, Python & CI/CD',
+    title: 'Luiz Felipe Ribeiro da Silva | Engenheiro de QA',
     description:
       'Portfólio de Luiz Felipe Ribeiro da Silva, engenheiro de QA experiente em automação de testes com Playwright e Python, testes de API com Postman, SQL/MySQL, Docker e CI/CD com GitHub Actions.',
     ogTitle: 'Luiz Felipe Ribeiro da Silva | Engenheiro de QA',
@@ -188,7 +188,7 @@ export default function Home() {
         <div className="container marquee-wrap reveal">
           <p className="marquee-label mono">Ferramentas</p>
           <div className="marquee" aria-hidden="true">
-            {/* Conteúdo duplicado para loop contínuo */}
+
             <div className="marquee-track" id="marquee-track">
               {[...TOOLS, ...TOOLS].map((tool, i) => <span key={i}>{tool}</span>)}
             </div>

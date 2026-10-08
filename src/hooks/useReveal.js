@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 
-/**
- * Reveal ao rolar (equivalente ao IntersectionObserver do script.js original).
- * Reexecuta sempre que a rota muda para observar os elementos da nova página.
- */
+
 export default function useReveal(dep) {
   useEffect(() => {
     const io = new IntersectionObserver(

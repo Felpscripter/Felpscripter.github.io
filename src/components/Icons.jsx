@@ -1,4 +1,4 @@
-/* Ícones SVG idênticos aos do HTML original */
+
 
 export function BugIcon() {
   return (
@@ -59,7 +59,7 @@ export function GitHubIcon() {
   );
 }
 
-/* ---- Ícones da seção "Sobre" ---- */
+
 const cellProps = {
   viewBox: '0 0 24 24', width: '18', height: '18', fill: 'none',
   stroke: 'currentColor', strokeWidth: '1.7', strokeLinecap: 'round', strokeLinejoin: 'round',

@@ -14,7 +14,7 @@ export default function App() {
         <Route path="process" element={<Process />} />
         <Route path="pipeline" element={<Pipeline />} />
 
-        {/* Compatibilidade com os links antigos (.html) */}
+
         <Route path="index.html" element={<Navigate to="/" replace />} />
         <Route path="stack.html" element={<Navigate to="/stack" replace />} />
         <Route path="process.html" element={<Navigate to="/process" replace />} />

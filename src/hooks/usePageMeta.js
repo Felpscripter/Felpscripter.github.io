@@ -5,10 +5,7 @@ const setMeta = (selector, content) => {
   if (el && content) el.setAttribute('content', content);
 };
 
-/**
- * Atualiza <title>, meta description, og:title e body[data-page] por página,
- * reproduzindo o <head> de cada HTML original.
- */
+
 export default function usePageMeta({ page, title, description, ogTitle }) {
   useEffect(() => {
     document.title = title;

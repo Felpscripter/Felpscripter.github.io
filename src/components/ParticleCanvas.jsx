@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-/** Canvas de partículas interativo da seção de contato (portado do script.js). */
+
 export default function ParticleCanvas() {
   const canvasRef = useRef(null);
 
@@ -72,7 +72,7 @@ export default function ParticleCanvas() {
 
     const initParticles = () => {
       particles = [];
-      const num = Math.min((w * h) / 12000, 100); // limite máximo de partículas
+      const num = Math.min((w * h) / 12000, 100);
       for (let i = 0; i < num; i++) particles.push(new Particle());
     };
     initParticles();

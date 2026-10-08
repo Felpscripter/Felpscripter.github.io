@@ -15,7 +15,7 @@ export default function Header({ page }) {
   const [activeIdx, setActiveIdx] = useState(-1);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Header: borda/blur ao rolar + link ativo (na home, de acordo com a seção visível)
+
   useEffect(() => {
     const sections = isHome
       ? NAV_LINKS.map((l) => (l.section ? document.getElementById(l.section) : null))
@@ -34,7 +34,7 @@ export default function Header({ page }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHome]);
 
-  // Fecha o menu mobile com Escape e ao trocar de página
+
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
     window.addEventListener('keydown', onKey);
@@ -42,12 +42,12 @@ export default function Header({ page }) {
   }, []);
   useEffect(() => setMenuOpen(false), [page]);
 
-  // Alternar tema (persistido)
+
   const toggleTheme = () => {
     const root = document.documentElement;
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) { /* ignore */ }
+    try { localStorage.setItem('theme', next); } catch (e) { }
   };
 
   const isActive = (link, i) => (isHome ? i === activeIdx : link.page === page);
